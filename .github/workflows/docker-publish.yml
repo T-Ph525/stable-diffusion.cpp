@@ -59,7 +59,7 @@ jobs:
         with:
           registry: docker.io
           username: mrcuddle111
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.DOCKER_TOKEN }}
 
       # Extract metadata (tags, labels) for Docker
       # https://github.com/docker/metadata-action
