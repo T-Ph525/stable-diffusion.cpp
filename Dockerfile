@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y build-essential git cmake
 WORKDIR /sd.cpp
 
 COPY . .
+RUN git submodule update --init --recursive
 
 RUN mkdir build && cd build && cmake .. && cmake --build . --config Release
 
