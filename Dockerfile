@@ -9,7 +9,7 @@ WORKDIR /sd.cpp
 COPY . .
 RUN git submodule update --init --recursive
 
-RUN mkdir build && cd build
+RUN mkdir /sd.cpp/build && cd /sd.cpp/build
 RUN cmake .. -DSD_CUDA=ON
 RUN cmake --build . --config Release
 
