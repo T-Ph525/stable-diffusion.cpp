@@ -2,14 +2,16 @@ ARG UBUNTU_VERSION=22.04
 
 FROM ubuntu:$UBUNTU_VERSION as build
 
-RUN apt-get update && apt-get install -y build-essential git cmake libgomp1 ccache
+RUN apt-get update && apt-get install -y build-essential git cmake nvidia-cuda-toolkit ccache
 
 WORKDIR /sd.cpp
 
 COPY . .
 RUN git submodule update --init --recursive
 
-RUN mkdir build && cd build && cmake .. -DSD_CUDA=ON && cmake --build . --config Release
+RUN mkdir build && cd build
+RUN cmake .. -DSD_CUDA=ON
+RUN cmake --build . --config Release
 
 FROM ubuntu:$UBUNTU_VERSION as runtime
 
