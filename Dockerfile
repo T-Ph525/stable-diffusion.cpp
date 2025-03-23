@@ -9,9 +9,10 @@ WORKDIR /sd.cpp
 COPY . .
 RUN git submodule update --init --recursive
 
-RUN mkdir /sd.cpp/build && cd /sd.cpp/build
-RUN cmake .. -DSD_CUDA=ON
-RUN cmake --build . --config Release
+RUN mkdir /sd.cpp/build 
+RUN cd /sd.cpp/build
+RUN cmake /sd.cpp -DSD_CUDA=ON
+RUN cmake --build /sd.cpp/build --config Release
 
 FROM ubuntu:$UBUNTU_VERSION as runtime
 
